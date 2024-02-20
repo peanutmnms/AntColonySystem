@@ -22,6 +22,7 @@ public class Grafo {
         String read="";
         String line="";
         try{
+                   
             if(!file.exists()){
                 file.createNewFile();
             }else{
@@ -35,17 +36,18 @@ public class Grafo {
                 br.close();
                 if(!read.isEmpty()){
                     String[] lines = read.split("\n");
+                    
                     int readingOp = 0;
-                    for(int i=0; i < lines.length ;i++){
+                    for(int i=0; i < lines.length ;i++){  
                         if(lines[i].trim().equals("ciudad")){
                             readingOp = 0;
                         }else if(lines[i].trim().equals("aristas")){
                             readingOp = 1;                            
                         }else if( readingOp == 0){
-                            Vertex ver = new Vertex(line);
-                            vl.insertar(ver);                              
+                            Vertex ver = new Vertex(lines[i]);
+                            vl.insertarNodo(ver);
                         }else if(readingOp==1){
-                            String[] arista = line.split(",");
+                            String[] arista = lines[i].split(",");
                             Edge aris = new Edge(vl.buscar(arista[1]));
                             aris.setLength(Double.parseDouble(arista[2]));
                             vl.buscarVertex(arista[0]).addAdjacent(aris);
@@ -54,9 +56,23 @@ public class Grafo {
                 }
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "FAIL");
+            JOptionPane.showMessageDialog(null, e);
         }
     return vl;   
     }
     
+    
+    public void imprimir(VertexLista v1){
+        Vertex aux = (Vertex) v1.getpFirst();
+        while(aux!= null){
+            System.out.println(aux.getData());
+            EdgeLista auxList = (EdgeLista) aux.getAdjacent();
+            System.out.println(auxList.recorrer());
+//            while (aux2 != null)
+//                System.out.print(aux.getData()+", ");
+//                aux2 = (Edge) aux2.getpNext();
+                
+            aux = (Vertex) aux.getpNext();
+        }
+    }
 }

@@ -11,7 +11,7 @@ import EDD.*;
  * @param <T>
  */
 public class Vertex<T> extends Nodo<T>{ 
-    private EdgeLista adjacent;
+    protected EdgeLista adjacent;
     
     public Vertex(T elem) {
     super(elem);
@@ -33,7 +33,7 @@ public class Vertex<T> extends Nodo<T>{
     }   
     
     public void addAdjacent(Edge adjacent){
-        this.adjacent.insertar(adjacent);
+        this.adjacent.insertarNodo(adjacent);
     }
     
     

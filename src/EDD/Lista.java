@@ -9,21 +9,63 @@ package EDD;
  * @author santi
  */
 public class Lista {
+
+    /**
+     * @return the pFirst
+     */
+    public Nodo getpFirst() {
+        return pFirst;
+    }
+
+    /**
+     * @param pFirst the pFirst to set
+     */
+    public void setpFirst(Nodo pFirst) {
+        this.pFirst = pFirst;
+    }
+
+    /**
+     * @return the pLast
+     */
+    public Nodo getpLast() {
+        return pLast;
+    }
+
+    /**
+     * @param pLast the pLast to set
+     */
+    public void setpLast(Nodo pLast) {
+        this.pLast = pLast;
+    }
+
+    /**
+     * @return the iN
+     */
+    public int getiN() {
+        return iN;
+    }
+
+    /**
+     * @param iN the iN to set
+     */
+    public void setiN(int iN) {
+        this.iN = iN;
+    }
     protected Nodo pFirst;
     protected Nodo pLast;
     protected int iN;
     
 public String vaciarLista(){
-    pFirst=null;
-    iN=0;  
+        setpFirst(null);
+        setiN(0);  
     return "La lista esta vacia";
 }
 
 public int numeroNodos(){
-    return iN;
+    return getiN();
  }
  public boolean esVacio(){
-    return pFirst==null;
+    return getpFirst()==null;
  }
  public Nodo próximo(Nodo pValor){
     if (pValor!=null){
@@ -49,16 +91,28 @@ public int numeroNodos(){
  iN++;
  }*/
  
- public void insertar(Nodo x){
+ public void insertarNodo(Nodo x){
     Nodo pNew= x;
     if (esVacio()){
-         pFirst=pNew;
-         pLast=pNew;
+            setpFirst(pNew);
+            setpLast(pNew);
     }else{
-        pLast.setpNext(pNew);
-        pLast=pNew;    
+            getpLast().setpNext(pNew);
+            setpLast(pNew);    
     }
- iN++;
+        setiN(getiN() + 1);
+ }
+ 
+ public void insertar(Nodo x){
+    Nodo pNew= new Nodo(x);
+    if (esVacio()){
+            setpFirst(pNew);
+            setpLast(pNew);
+    }else{
+            getpLast().setpNext(pNew);
+            setpLast(pNew);    
+    }
+        setiN(getiN() + 1);
  }
  
   /*public void insertarPrimero(int x){
@@ -73,9 +127,9 @@ public int numeroNodos(){
  iN++;
  }*/
  public Nodo buscar(String elemento){
-        Nodo aux = pFirst;
+        Nodo aux = getpFirst();
         while (aux != null){
-            if(aux.getData()==elemento){
+            if(aux.getData().equals(elemento)){
                 return aux;
             }else{
                 aux=aux.getpNext();

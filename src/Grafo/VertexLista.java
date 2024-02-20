@@ -12,9 +12,11 @@ import EDD.*;
 public class VertexLista extends Lista{
     
     public Vertex buscarVertex(String elemento){
-        Vertex aux = (Vertex) pFirst;
+        Vertex aux = (Vertex) getpFirst();
         while (aux != null){
-            if(aux.getData()==elemento){
+//            System.out.println(aux.getData());
+//            System.out.println(elemento);
+            if(aux.getData().equals(elemento)){
                 return aux;
             }else{
                 aux=(Vertex) aux.getpNext();

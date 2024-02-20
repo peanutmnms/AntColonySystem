@@ -11,15 +11,32 @@ import EDD.*;
  */
 public class EdgeLista extends Lista{
     public Edge buscarEdge(String elemento){
-        Edge aux = (Edge) pFirst;
+        Edge aux = (Edge) getpFirst();
         while (aux != null){
-            if(aux.getData()==elemento){
+            if(aux.getData().equals(elemento)){
                 return aux;
             }else{
                 aux=(Edge) aux.getpNext();
             }
         }
      return null;
+    }
+    
+    public String recorrer(){
+    Nodo pAux;
+    String resultado="";
+        if (esVacio()){
+            resultado=" está vacía";
+
+        }else{
+            pAux=pFirst;
+            while(pAux!= null){
+                resultado=resultado + this.leer((Nodo) pAux.getData())+ ", ";
+                pAux=próximo(pAux);
+                //pAux=pAux.pnext;
+            }
+        }
+        return resultado;
     }
     
 }
