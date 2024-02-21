@@ -7,6 +7,8 @@ package GUI;
 import java.io.File;
 import javax.swing.JFileChooser;
 import Grafo.*;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -114,12 +116,27 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void UploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadActionPerformed
-        String nombre="";
+        //Crea objeto FileChooser
         JFileChooser file=new JFileChooser();
+        //Crea filtro para solo archivos txt
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT","txt");
+        //pasa el filtro al filechooser
+        file.setFileFilter(filtro);
+        //muestra el filechooser
         file.showSaveDialog(this);
+        //guarda el filechooser
         File guarda =file.getSelectedFile();
-        Grafo grafo = new Grafo();
-        grafo.imprimir(grafo.read_text(guarda));
+        
+        String fileName = guarda.getName().toUpperCase();
+        if (fileName.endsWith(".TXT") ) {
+            Grafo grafo = new Grafo();
+            grafo.imprimir(grafo.read_text(guarda));    
+        }else{
+            JOptionPane.showMessageDialog(null, "Ha introducido un tipo de archivo no valido");
+        }
+        
+        
+        
        
 
     }//GEN-LAST:event_UploadActionPerformed
