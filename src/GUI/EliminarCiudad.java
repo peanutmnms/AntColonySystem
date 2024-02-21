@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author santi
@@ -44,6 +46,11 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 100, 20));
 
         CrearCiudad.setText("Eliminar");
+        CrearCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearCiudadActionPerformed(evt);
+            }
+        });
         jPanel1.add(CrearCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
         InputCiudad.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +95,18 @@ public class EliminarCiudad extends javax.swing.JFrame {
     private void VolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverMenuActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_VolverMenuActionPerformed
+
+    private void CrearCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCiudadActionPerformed
+        String ciudad = InputCiudad.getText();
+        
+        //validador de que el input ciudad no este vacio
+        if(!ciudad.isEmpty()){
+            this.setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ingrese una ciudad");
+        }
+    }//GEN-LAST:event_CrearCiudadActionPerformed
 
     /**
      * @param args the command line arguments

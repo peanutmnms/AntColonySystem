@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author santi
@@ -48,6 +50,11 @@ public class InsertarCiudad extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 20));
 
         CrearCiudad.setText("Agregar");
+        CrearCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearCiudadActionPerformed(evt);
+            }
+        });
         jPanel1.add(CrearCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
 
         InputCiudad.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +111,34 @@ public class InsertarCiudad extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_VolverMenuActionPerformed
+
+    private void CrearCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCiudadActionPerformed
+        String ciudad = InputCiudad.getText();
+        String aristas = InputAristas.getText();
+                
+        char someChar = ',';
+        int count = 0;
+        
+        for (int i = 0; i < aristas.length(); i++) {
+            if (aristas.charAt(i) == someChar) {
+                count++;
+            }
+        }
+        int remainder = count % 2 ;
+        
+        //validador de que los campos ciudad y arista no esten vacios (y que el numero de comas sea par)
+        if((remainder ==0)&&(!ciudad.isEmpty())&&(!aristas.isEmpty())){
+            Home.grafo.addVertex(ciudad, aristas);
+            Home.grafo.imprimir(Home.grafo.getVertices());
+            this.setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Posee un formato invalido o faltan campos");
+        }
+        
+        
+        
+    }//GEN-LAST:event_CrearCiudadActionPerformed
 
     /**
      * @param args the command line arguments

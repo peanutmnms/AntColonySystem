@@ -19,6 +19,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    static Grafo grafo = new Grafo();
     public Home() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -129,8 +130,9 @@ public class Home extends javax.swing.JFrame {
         
         String fileName = guarda.getName().toUpperCase();
         if (fileName.endsWith(".TXT") ) {
-            Grafo grafo = new Grafo();
-            grafo.imprimir(grafo.read_text(guarda));    
+            VertexLista v1=grafo.read_text(guarda);
+            grafo.setVertices(v1);
+            
         }else{
             JOptionPane.showMessageDialog(null, "Ha introducido un tipo de archivo no valido");
         }

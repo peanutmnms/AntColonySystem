@@ -14,6 +14,20 @@ import javax.swing.JOptionPane;
  * @author santi
  */
 public class Grafo {
+
+    /**
+     * @return the vertices
+     */
+    public VertexLista getVertices() {
+        return vertices;
+    }
+
+    /**
+     * @param vertices the vertices to set
+     */
+    public void setVertices(VertexLista vertices) {
+        this.vertices = vertices;
+    }
     protected VertexLista vertices;
     
     public static VertexLista read_text(File file){
@@ -81,5 +95,29 @@ public class Grafo {
                 
             aux = (Vertex) aux.getpNext();
         }
+    }
+    
+    public void addVertex(String ciudad, String aristas){
+        Vertex ver = new Vertex(ciudad);
+        this.vertices.insertarNodo(ver);
+        
+        
+        String[] lines = aristas.split("\n");
+        for(int i=0; i < lines.length ;i++){
+            String[] arista = lines[i].split(",");
+            //agrega aristas tal cual como salen en el txt para crear el grafo (pero las aristas solo estan vinculadas en una direccion)
+            Edge aris = new Edge(this.vertices.buscar(arista[1]));
+            aris.setLength(Double.parseDouble(arista[2]));
+            this.vertices.buscarVertex(arista[0]).addAdjacent(aris);
+
+            //agregando aristas de forma inversa para que sea un grafo no dirigido 
+            Edge aris2 = new Edge(this.vertices.buscar(arista[0]));
+            aris.setLength(Double.parseDouble(arista[2]));
+            this.vertices.buscarVertex(arista[1]).addAdjacent(aris2); 
+        }
+            
+        
+        
+        
     }
 }
