@@ -48,15 +48,22 @@ public class Grafo {
                             vl.insertarNodo(ver);
                         }else if(readingOp==1){
                             String[] arista = lines[i].split(",");
+                            //agrega aristas tal cual como salen en el txt para crear el grafo (pero las aristas solo estan vinculadas en una direccion)
                             Edge aris = new Edge(vl.buscar(arista[1]));
                             aris.setLength(Double.parseDouble(arista[2]));
                             vl.buscarVertex(arista[0]).addAdjacent(aris);
+                            
+                            //agregando aristas de forma inversa para que sea un grafo no dirigido 
+                            Edge aris2 = new Edge(vl.buscar(arista[0]));
+                            aris.setLength(Double.parseDouble(arista[2]));
+                            vl.buscarVertex(arista[1]).addAdjacent(aris2);
+                            
                         }
                     }
                 }
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "No ha importado ningun archivo");
         }
     return vl;   
     }

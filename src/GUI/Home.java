@@ -19,6 +19,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -93,19 +94,9 @@ public class Home extends javax.swing.JFrame {
                 SaveActionPerformed(evt);
             }
         });
-        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 120, -1));
+        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 150, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
-        );
-
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,7 +125,6 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_UploadActionPerformed
 
     private void DeleteVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVertexActionPerformed
-        this.setVisible(false);
         EliminarCiudad ciudad = new EliminarCiudad();
         ciudad.setVisible(true);
     }//GEN-LAST:event_DeleteVertexActionPerformed
@@ -148,7 +138,6 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveActionPerformed
 
     private void AddVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddVertexActionPerformed
-        this.setVisible(false);
         InsertarCiudad ciudad = new InsertarCiudad();
         ciudad.setVisible(true);
     }//GEN-LAST:event_AddVertexActionPerformed

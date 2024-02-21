@@ -15,6 +15,8 @@ public class EliminarCiudad extends javax.swing.JFrame {
      */
     public EliminarCiudad() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -31,6 +33,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
         CrearCiudad = new javax.swing.JButton();
         InputCiudad = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        VolverMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,10 +41,10 @@ public class EliminarCiudad extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Eliminar Ciudad");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 100, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 100, 20));
 
         CrearCiudad.setText("Eliminar");
-        jPanel1.add(CrearCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
+        jPanel1.add(CrearCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
         InputCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,20 +57,25 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jLabel2.setText("Ciudad");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 50, -1));
 
+        VolverMenu.setText("Cancelar");
+        VolverMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
         );
 
         pack();
@@ -76,6 +84,10 @@ public class EliminarCiudad extends javax.swing.JFrame {
     private void InputCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputCiudadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InputCiudadActionPerformed
+
+    private void VolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverMenuActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_VolverMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +128,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CrearCiudad;
     private javax.swing.JTextField InputCiudad;
+    private javax.swing.JButton VolverMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

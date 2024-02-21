@@ -15,6 +15,8 @@ public class InsertarCiudad extends javax.swing.JFrame {
      */
     public InsertarCiudad() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -35,6 +37,7 @@ public class InsertarCiudad extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        VolverMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,7 +45,7 @@ public class InsertarCiudad extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Agregar Ciudad");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 100, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 100, 20));
 
         CrearCiudad.setText("Agregar");
         jPanel1.add(CrearCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
@@ -71,19 +74,23 @@ public class InsertarCiudad extends javax.swing.JFrame {
         jLabel4.setText("Ciudad, Destino, Distancia->  4,5,8.1");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 220, -1));
 
+        VolverMenu.setText("Cancelar");
+        VolverMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(VolverMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -92,6 +99,11 @@ public class InsertarCiudad extends javax.swing.JFrame {
     private void InputCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputCiudadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InputCiudadActionPerformed
+
+    private void VolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverMenuActionPerformed
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_VolverMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +144,7 @@ public class InsertarCiudad extends javax.swing.JFrame {
     private javax.swing.JButton CrearCiudad;
     private javax.swing.JTextArea InputAristas;
     private javax.swing.JTextField InputCiudad;
+    private javax.swing.JButton VolverMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
