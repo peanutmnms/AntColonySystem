@@ -170,4 +170,14 @@ public class Grafo {
                 
     }
     
+    public void deleteVertex(Nodo x){
+        Vertex aux= (Vertex) vertices.getpFirst();
+        while(aux != null){
+            aux.deleteEdge(x); 
+            aux =(Vertex) aux.getpNext();
+        }
+        vertices.deleteNodo(x);
+        
+    }
+    
 }

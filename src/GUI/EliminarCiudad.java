@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import EDD.Nodo;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,7 +33,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        CrearCiudad = new javax.swing.JButton();
+        EliminarCiudad = new javax.swing.JButton();
         InputCiudad = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         VolverMenu = new javax.swing.JButton();
@@ -45,13 +46,13 @@ public class EliminarCiudad extends javax.swing.JFrame {
         jLabel1.setText("Eliminar Ciudad");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 100, 20));
 
-        CrearCiudad.setText("Eliminar");
-        CrearCiudad.addActionListener(new java.awt.event.ActionListener() {
+        EliminarCiudad.setText("Eliminar");
+        EliminarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearCiudadActionPerformed(evt);
+                EliminarCiudadActionPerformed(evt);
             }
         });
-        jPanel1.add(CrearCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
+        jPanel1.add(EliminarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
         InputCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,18 +97,20 @@ public class EliminarCiudad extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_VolverMenuActionPerformed
 
-    private void CrearCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearCiudadActionPerformed
-        String ciudad = InputCiudad.getText();
-        
+    private void EliminarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarCiudadActionPerformed
+        String inputCiudad = InputCiudad.getText();
+               
         //validador de que el input ciudad no este vacio
-        if(!ciudad.isEmpty()){
+        if(!inputCiudad.isEmpty()){
+            Nodo ciudad = Home.grafo.getVertices().buscar(inputCiudad);
+            //System.out.println(ciudad);
             Home.grafo.deleteVertex(ciudad);
             this.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(null, "Ingrese una ciudad");
         }
-    }//GEN-LAST:event_CrearCiudadActionPerformed
+    }//GEN-LAST:event_EliminarCiudadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +149,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CrearCiudad;
+    private javax.swing.JButton EliminarCiudad;
     private javax.swing.JTextField InputCiudad;
     private javax.swing.JButton VolverMenu;
     private javax.swing.JLabel jLabel1;

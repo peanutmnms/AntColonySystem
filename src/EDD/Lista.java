@@ -9,6 +9,9 @@ package EDD;
  * @author santi
  */
 public class Lista {
+    protected Nodo pFirst;
+    protected Nodo pLast;
+    protected int iN;
 
     /**
      * @return the pFirst
@@ -51,10 +54,7 @@ public class Lista {
     public void setiN(int iN) {
         this.iN = iN;
     }
-    protected Nodo pFirst;
-    protected Nodo pLast;
-    protected int iN;
-    
+        
 public String emptyList(){
         setpFirst(null);
         setiN(0);  
@@ -138,6 +138,37 @@ public int numeroNodos(){
      return null;
     }
  
+ public void deleteFirst(){
+    if (pFirst != null){
+        Nodo aux = pFirst;
+        pFirst = pFirst.getpNext();
+        aux.setpNext(null);
+        setiN(getiN() -1);
+    }
+ }
+ 
+ public void deleteNodo(Nodo x){
+    Nodo aux = pFirst;
+    Nodo aux1 = x;
+    if (pFirst != null) {
+        if (pFirst == aux1) {
+           this.deleteFirst();
+        }else{
+            while(aux.getpNext()!=aux1){
+                aux=aux.getpNext();
+            }
+            aux.setpNext(aux1.getpNext());
+            aux1.setpNext(null);
+            setiN(getiN()- 1 );
+        }  
+    }
+ }
+ 
+ 
+ 
+ 
+ 
 }
+ 
 
 

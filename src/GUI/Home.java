@@ -147,6 +147,7 @@ public class Home extends javax.swing.JFrame {
     private void DeleteVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVertexActionPerformed
         EliminarCiudad ciudad = new EliminarCiudad();
         ciudad.setVisible(true);
+        
     }//GEN-LAST:event_DeleteVertexActionPerformed
 
     private void InputAntNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputAntNumActionPerformed
