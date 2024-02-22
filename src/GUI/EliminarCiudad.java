@@ -101,6 +101,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
         
         //validador de que el input ciudad no este vacio
         if(!ciudad.isEmpty()){
+            Home.grafo.deleteVertex(ciudad);
             this.setVisible(false);
         }
         else{

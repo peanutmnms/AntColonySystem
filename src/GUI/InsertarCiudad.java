@@ -129,7 +129,7 @@ public class InsertarCiudad extends javax.swing.JFrame {
         //validador de que los campos ciudad y arista no esten vacios (y que el numero de comas sea par)
         if((remainder ==0)&&(!ciudad.isEmpty())&&(!aristas.isEmpty())){
             Home.grafo.addVertex(ciudad, aristas);
-            Home.grafo.imprimir(Home.grafo.getVertices());
+            //Home.grafo.imprimir(Home.grafo.getVertices());
             this.setVisible(false);
         }
         else{

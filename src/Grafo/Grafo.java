@@ -4,9 +4,11 @@
  */
 package Grafo;
 
+import EDD.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,7 +71,7 @@ public class Grafo {
                             
                             //agregando aristas de forma inversa para que sea un grafo no dirigido 
                             Edge aris2 = new Edge(vl.buscar(arista[0]));
-                            aris.setLength(Double.parseDouble(arista[2]));
+                            aris2.setLength(Double.parseDouble(arista[2]));
                             vl.buscarVertex(arista[1]).addAdjacent(aris2);
                             
                         }
@@ -81,14 +83,20 @@ public class Grafo {
         }
     return vl;   
     }
-    
-    
-    public void imprimir(VertexLista v1){
-        Vertex aux = (Vertex) v1.getpFirst();
+
+    public void imprimir(){
+        Vertex aux = (Vertex) this.vertices.getpFirst();
         while(aux!= null){
             System.out.println(aux.getData());
             EdgeLista auxList = (EdgeLista) aux.getAdjacent();
             System.out.println(auxList.recorrer());
+            Edge auxE = (Edge) auxList.getpFirst();
+            while (auxE.getpNext() != null){
+                System.out.println(auxE.getLength());
+                auxE = (Edge) auxE.getpNext();
+            }
+                
+            
 //            while (aux2 != null)
 //                System.out.print(aux.getData()+", ");
 //                aux2 = (Edge) aux2.getpNext();
@@ -115,9 +123,51 @@ public class Grafo {
             aris.setLength(Double.parseDouble(arista[2]));
             this.vertices.buscarVertex(arista[1]).addAdjacent(aris2); 
         }
-            
-        
-        
+    }
+    
+    public void deleteVertex(String ciudad){
         
     }
+    
+    public void write_txt(){
+        String info = "";
+        String path = "test/info.txt";
+        String aristas = "";
+        info += "ciudad\n";
+        String ciudades=""; 
+        
+        if (!this.vertices.isEmpty()) {
+            Vertex auxV = (Vertex) vertices.getpFirst();
+            while(auxV!=null){
+                Edge auxE = (Edge) auxV.getAdjacent().getpFirst();
+                
+                while(auxE!=null){
+                    
+                    if (!ciudades.contains((String) auxE.getDest().getData())) {
+                        String infoArista = auxV.getData() + "," + auxE.getDest().getData()+ "," + String.valueOf(auxE.getLength());
+                        aristas += infoArista + "\n";   
+                    }
+                    auxE = (Edge) auxE.getpNext();  
+                }
+                ciudades+= (String) auxV.getData() + " ";
+                
+                info += (String) auxV.getData() + "\n";
+                auxV = (Vertex) auxV.getpNext();
+            }           
+        }
+        
+        info += "aristas\n";
+        info += aristas;
+        
+        try{
+            File file = new File(path);
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(info);
+            pw.close();  
+        }catch (Exception e){
+            
+        }
+                
+    }
+    
 }

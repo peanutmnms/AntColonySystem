@@ -45,5 +45,9 @@ public class Edge<T> extends Nodo<T>{
      */
     public void setPheromones(double pheromones) {
         this.pheromones = pheromones;
-    }    
+    }
+
+    public Vertex getDest(){
+        return (Vertex) data;
+    }
 }

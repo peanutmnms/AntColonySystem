@@ -55,7 +55,7 @@ public class Lista {
     protected Nodo pLast;
     protected int iN;
     
-public String vaciarLista(){
+public String emptyList(){
         setpFirst(null);
         setiN(0);  
     return "La lista esta vacia";
@@ -64,7 +64,7 @@ public String vaciarLista(){
 public int numeroNodos(){
     return getiN();
  }
- public boolean esVacio(){
+ public boolean isEmpty(){
     return getpFirst()==null;
  }
  public Nodo próximo(Nodo pValor){
@@ -76,13 +76,13 @@ public int numeroNodos(){
     }
  }
  
- public Object leer(Nodo pValor){
+ public Object read(Nodo pValor){
     return pValor.getData();
  }
  
  /*public void insertar(Object x, Nodo pValor){
     Nodo pNew=new Nodo(x);
-    if (esVacio()){
+    if (isEmpty()){
          pFirst=pNew;
     }else{
         pNew.setpNext(pValor.getpNext());
@@ -93,7 +93,7 @@ public int numeroNodos(){
  
  public void insertarNodo(Nodo x){
     Nodo pNew= x;
-    if (esVacio()){
+    if (isEmpty()){
             setpFirst(pNew);
             setpLast(pNew);
     }else{
@@ -105,7 +105,7 @@ public int numeroNodos(){
  
  public void insertar(Nodo x){
     Nodo pNew= new Nodo(x);
-    if (esVacio()){
+    if (isEmpty()){
             setpFirst(pNew);
             setpLast(pNew);
     }else{
@@ -117,7 +117,7 @@ public int numeroNodos(){
  
   /*public void insertarPrimero(int x){
     Nodo pNew=new Nodo(x);
-    if (esVacio()){
+    if (isEmpty()){
          pFirst=pNew;
          pLast=pNew;
     }else{

@@ -132,6 +132,7 @@ public class Home extends javax.swing.JFrame {
         if (fileName.endsWith(".TXT") ) {
             VertexLista v1=grafo.read_text(guarda);
             grafo.setVertices(v1);
+            grafo.imprimir();
             
         }else{
             JOptionPane.showMessageDialog(null, "Ha introducido un tipo de archivo no valido");
@@ -153,7 +154,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_InputAntNumActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-        // TODO add your handling code here:
+        grafo.write_txt();
     }//GEN-LAST:event_SaveActionPerformed
 
     private void AddVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddVertexActionPerformed
