@@ -7,6 +7,7 @@ package GUI;
 import java.io.File;
 import javax.swing.JFileChooser;
 import Grafo.*;
+import antcolonysystem.Ant;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -82,6 +83,11 @@ public class Home extends javax.swing.JFrame {
         jPanel1.add(DeleteVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 150, -1));
 
         Start.setText("Iniciar");
+        Start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartActionPerformed(evt);
+            }
+        });
         jPanel1.add(Start, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 70, -1));
 
         InputAntNum.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +168,11 @@ public class Home extends javax.swing.JFrame {
         InsertarCiudad ciudad = new InsertarCiudad();
         ciudad.setVisible(true);
     }//GEN-LAST:event_AddVertexActionPerformed
+
+    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
+        Ant ant = new Ant();
+        ant.draw();
+    }//GEN-LAST:event_StartActionPerformed
 
     /**
      * @param args the command line arguments
