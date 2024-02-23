@@ -7,7 +7,7 @@ package GUI;
 import java.io.File;
 import javax.swing.JFileChooser;
 import Grafo.*;
-import antcolonysystem.Ant;
+import antcolonysystem.DrawGraf;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -134,15 +134,20 @@ public class Home extends javax.swing.JFrame {
         file.showSaveDialog(this);
         //guarda el filechooser
         File guarda =file.getSelectedFile();
-        
-        String fileName = guarda.getName().toUpperCase();
-        if (fileName.endsWith(".TXT") ) {
-            VertexLista v1=grafo.read_text(guarda);
-            grafo.setVertices(v1);
-            grafo.imprimir();
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "Ha introducido un tipo de archivo no valido");
+        try{        
+            String fileName = guarda.getName().toUpperCase();
+            if (fileName.endsWith(".TXT") ) {
+                VertexLista v1=grafo.read_text(guarda);
+                grafo.setVertices(v1);
+                JOptionPane.showMessageDialog(null, "El archivo se ha cargado de forma exitosa");
+                
+                //grafo.imprimir();
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Ha introducido un tipo de archivo no valido");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"No ha introducido un archivo");
         }
         
         
@@ -171,7 +176,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_AddVertexActionPerformed
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        Ant ant = new Ant();
+        DrawGraf ant = new DrawGraf();
         ant.draw(grafo.getVertices());
     }//GEN-LAST:event_StartActionPerformed
 

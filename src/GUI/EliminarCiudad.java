@@ -102,10 +102,15 @@ public class EliminarCiudad extends javax.swing.JFrame {
                
         //validador de que el input ciudad no este vacio
         if(!inputCiudad.isEmpty()){
-            Nodo ciudad = Home.grafo.getVertices().buscar(inputCiudad);
-            //System.out.println(ciudad);
-            Home.grafo.deleteVertex(ciudad);
-            this.setVisible(false);
+            try{
+                Nodo ciudad = Home.grafo.getVertices().buscar(inputCiudad);
+                //System.out.println(ciudad);
+                Home.grafo.deleteVertex(ciudad);
+                JOptionPane.showMessageDialog(null, "La ciudad "+inputCiudad+" ha sido\nborrada de forma exitosa.");
+                this.setVisible(false);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "La ciudad "+inputCiudad+" no se encuentra en el grafo.");
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "Ingrese una ciudad");

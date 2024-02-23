@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author santi
  */
 public class GrafManager {
+    protected VertexLista vertices;
 
     /**
      * @return the vertices
@@ -30,8 +31,9 @@ public class GrafManager {
     public void setVertices(VertexLista vertices) {
         this.vertices = vertices;
     }
-    protected VertexLista vertices;
     
+    
+    //Funcion para importar el archivo TXT y leer toda la data del archivo 
     public static VertexLista read_text(File file){
         VertexLista vl = new VertexLista();
         
@@ -83,7 +85,8 @@ public class GrafManager {
         }
     return vl;   
     }
-
+    
+    //funcion para imprimir el grafo (todos los nodos con sus adjacentes y distancias) por consola
     public void imprimir(){
         Vertex aux = (Vertex) this.vertices.getpFirst();
         while(aux!= null){
@@ -105,30 +108,30 @@ public class GrafManager {
         }
     }
     
+    //Funcion para a~nadir un vertex (despues de que primero haya sido importado el archivo TXT)
     public void addVertex(String ciudad, String aristas){
         Vertex ver = new Vertex(ciudad);
-        this.vertices.insertarNodo(ver);
-        
-        
-        String[] lines = aristas.split("\n");
-        for(int i=0; i < lines.length ;i++){
-            String[] arista = lines[i].split(",");
-            //agrega aristas tal cual como salen en el txt para crear el grafo (pero las aristas solo estan vinculadas en una direccion)
-            Edge aris = new Edge(this.vertices.buscar(arista[1]));
-            aris.setLength(Double.parseDouble(arista[2]));
-            this.vertices.buscarVertex(arista[0]).addAdjacent(aris);
+        if(this.vertices!=null){
+            this.vertices.insertarNodo(ver);
+            String[] lines = aristas.split("\n");
+            for(int i=0; i < lines.length ;i++){
+                String[] arista = lines[i].split(",");
+                //agrega aristas tal cual como salen en el txt para crear el grafo (pero las aristas solo estan vinculadas en una direccion)
+                Edge aris = new Edge(this.vertices.buscar(arista[1]));
+                aris.setLength(Double.parseDouble(arista[2]));
+                this.vertices.buscarVertex(arista[0]).addAdjacent(aris);
 
-            //agregando aristas de forma inversa para que sea un grafo no dirigido 
-            Edge aris2 = new Edge(this.vertices.buscar(arista[0]));
-            aris.setLength(Double.parseDouble(arista[2]));
-            this.vertices.buscarVertex(arista[1]).addAdjacent(aris2); 
+                //agregando aristas de forma inversa para que sea un grafo no dirigido 
+                Edge aris2 = new Edge(this.vertices.buscar(arista[0]));
+                aris.setLength(Double.parseDouble(arista[2]));
+                this.vertices.buscarVertex(arista[1]).addAdjacent(aris2); 
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Antes de agregar ciudades debe importar un archivo");
         }
     }
     
-    public void deleteVertex(String ciudad){
-        
-    }
-    
+    //Funcion para escribir todo los cambios y guardar en otro archivo TXT
     public void write_txt(){
         String info = "";
         String path = "test/info.txt";
@@ -136,7 +139,7 @@ public class GrafManager {
         info += "ciudad\n";
         String ciudades=""; 
         
-        if (!this.vertices.isEmpty()) {
+        if (this.vertices!=null) {
             Vertex auxV = (Vertex) vertices.getpFirst();
             while(auxV!=null){
                 Edge auxE = (Edge) auxV.getAdjacent().getpFirst();
@@ -163,13 +166,16 @@ public class GrafManager {
             File file = new File(path);
             PrintWriter pw = new PrintWriter(file);
             pw.print(info);
-            pw.close();  
+            pw.close(); 
+            JOptionPane.showMessageDialog(null, "El archivo ha sido guardado de forma exitosa");
         }catch (Exception e){
             
         }
                 
     }
     
+    
+    //Funcion para elminar un vertice del grafo
     public void deleteVertex(Nodo x){
         Vertex aux= (Vertex) vertices.getpFirst();
         while(aux != null){
