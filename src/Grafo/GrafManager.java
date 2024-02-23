@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author santi
  */
-public class Grafo {
+public class GrafManager {
 
     /**
      * @return the vertices

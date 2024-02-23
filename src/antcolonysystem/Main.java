@@ -20,7 +20,7 @@ public class Main {
         Inicio ventana = new Inicio();
         ventana.setVisible(true);
         
-        Grafo grafo = new Grafo();
+        GrafManager grafo = new GrafManager();
         
     }
     

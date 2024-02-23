@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package antcolonysystem;
+import Grafo.*;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
@@ -12,21 +13,33 @@ import org.graphstream.graph.implementations.*;
  */
 public class Ant {
     
-    public static void draw() {
-            System.setProperty("org.graphstream.ui", "swing");
+    public static void draw(VertexLista vertices) {
+        System.setProperty("org.graphstream.ui", "swing");
 
-            Graph graph = new SingleGraph("Tutorial 1");
-
-            graph.addNode("A");
-            graph.addNode("B");
-            graph.addNode("C");
-            graph.addEdge("AB", "A", "B");
-            graph.addEdge("BC", "B", "C");
-            graph.addEdge("CA", "C", "A");
-
-            graph.display();
-    }
-
-    
+        Graph graph = new SingleGraph("AntColonySystem"); 
+        String ciudades=""; 
+        String aristas = "";
+        
+        if (!vertices.isEmpty()) {
+            Vertex auxV = (Vertex) vertices.getpFirst();
+            while(auxV!=null){
+                graph.addNode((String) auxV.getData());
+                auxV = (Vertex) auxV.getpNext();
+            }
+            auxV = (Vertex) vertices.getpFirst();
+            while(auxV!=null){
+                Grafo.Edge auxE = (Grafo.Edge) auxV.getAdjacent().getpFirst();
+                while(auxE!=null){
+                    if (!ciudades.contains((String) auxE.getDest().getData())) {
+                        graph.addEdge((String) auxV.getData()+"+"+(String)auxE.getDest().getData(), (String) auxV.getData(), (String) auxE.getDest().getData());
+                    }
+                    auxE = (Grafo.Edge) auxE.getpNext();  
+                }
+                ciudades+= (String) auxV.getData() + " ";
+                auxV = (Vertex) auxV.getpNext();
+            }
+        }
+        graph.display();
+    }  
     
 }

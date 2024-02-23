@@ -11,6 +11,7 @@ import antcolonysystem.Ant;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+
 /**
  *
  * @author santi
@@ -20,7 +21,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    static Grafo grafo = new Grafo();
+    static GrafManager grafo = new GrafManager();
     public Home() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -171,7 +172,7 @@ public class Home extends javax.swing.JFrame {
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
         Ant ant = new Ant();
-        ant.draw();
+        ant.draw(grafo.getVertices());
     }//GEN-LAST:event_StartActionPerformed
 
     /**
