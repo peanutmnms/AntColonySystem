@@ -4,14 +4,6 @@
  */
 package GUI;
 
-import java.io.File;
-import javax.swing.JFileChooser;
-import Grafo.*;
-import Grafo.DrawGraf;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-
 /**
  *
  * @author santi
@@ -19,12 +11,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class Home extends javax.swing.JFrame {
 
     /**
-     * Creates new form Home
+     * Creates new form Ventana
      */
-    static GrafManager grafo = new GrafManager();
     public Home() {
         initComponents();
         this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -36,162 +28,45 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        Save = new javax.swing.JButton();
-        AddVertex = new javax.swing.JButton();
-        DeleteVertex = new javax.swing.JButton();
-        Start = new javax.swing.JButton();
-        InputAntNum = new javax.swing.JTextField();
-        Title = new javax.swing.JLabel();
-        InputNumCiclos = new javax.swing.JTextField();
-        Upload = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        Show = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel3.setText("ExplcicaExplcicaExplcicaExplcicaExplcicaExplcica");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 260, 30));
 
-        Save.setText("Guardar Archivo");
-        Save.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Santiago Alvarez");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        Show.setText("Empezar");
+        Show.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveActionPerformed(evt);
+                ShowActionPerformed(evt);
             }
         });
-        jPanel2.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 150, -1));
+        jPanel1.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
 
-        AddVertex.setText("Agregar Ciudad");
-        AddVertex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddVertexActionPerformed(evt);
-            }
-        });
-        jPanel2.add(AddVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 150, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Ant Colony System");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
 
-        DeleteVertex.setText("Eliminar Ciudad");
-        DeleteVertex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteVertexActionPerformed(evt);
-            }
-        });
-        jPanel2.add(DeleteVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 150, -1));
-
-        Start.setText("Iniciar");
-        Start.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Start, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
-
-        InputAntNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputAntNumActionPerformed(evt);
-            }
-        });
-        jPanel2.add(InputAntNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 150, -1));
-
-        Title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Title.setText("Ant Colony");
-        jPanel2.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
-
-        InputNumCiclos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputNumCiclosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(InputNumCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 150, -1));
-
-        Upload.setText("Subir Archivo");
-        Upload.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UploadActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 150, -1));
-
-        jLabel1.setText("Numero de ciclos");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
-
-        jLabel2.setText("Numero de hormigas");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InputAntNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputAntNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InputAntNumActionPerformed
-
-    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        DrawGraf ant = new DrawGraf();
-        ant.draw(grafo.getVertices());
-    }//GEN-LAST:event_StartActionPerformed
-
-    private void DeleteVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVertexActionPerformed
-        EliminarCiudad ciudad = new EliminarCiudad();
-        ciudad.setVisible(true);
-
-    }//GEN-LAST:event_DeleteVertexActionPerformed
-
-    private void AddVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddVertexActionPerformed
-        InsertarCiudad ciudad = new InsertarCiudad();
-        ciudad.setVisible(true);
-    }//GEN-LAST:event_AddVertexActionPerformed
-
-    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-        grafo.write_txt();
-    }//GEN-LAST:event_SaveActionPerformed
-
-    private void UploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadActionPerformed
-        //Crea objeto FileChooser
-        JFileChooser file=new JFileChooser();
-        //Crea filtro para solo archivos txt
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT","txt");
-        //pasa el filtro al filechooser
-        file.setFileFilter(filtro);
-        //muestra el filechooser
-        file.showSaveDialog(this);
-        //guarda el filechooser
-        File guarda =file.getSelectedFile();
-        try{
-            String fileName = guarda.getName().toUpperCase();
-            if (fileName.endsWith(".TXT") ) {
-                VertexLista v1=grafo.read_text(guarda);
-                grafo.setVertices(v1);
-                JOptionPane.showMessageDialog(null, "El archivo se ha cargado de forma exitosa");
-
-                //grafo.imprimir();
-
-            }else{
-                JOptionPane.showMessageDialog(null, "Ha introducido un tipo de archivo no valido");
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"No ha introducido un archivo");
-        }
-
-    }//GEN-LAST:event_UploadActionPerformed
-
-    private void InputNumCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNumCiclosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InputNumCiclosActionPerformed
+    private void ShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowActionPerformed
+        this.setVisible(false);
+        Menu home = new Menu();
+        home.setVisible(true);
+    }//GEN-LAST:event_ShowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +94,13 @@ public class Home extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -229,16 +111,10 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddVertex;
-    private javax.swing.JButton DeleteVertex;
-    private javax.swing.JTextField InputAntNum;
-    private javax.swing.JTextField InputNumCiclos;
-    private javax.swing.JButton Save;
-    private javax.swing.JButton Start;
-    private javax.swing.JLabel Title;
-    private javax.swing.JButton Upload;
+    private javax.swing.JButton Show;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

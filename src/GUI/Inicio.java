@@ -4,19 +4,22 @@
  */
 package GUI;
 
+import static GUI.Menu.grafo;
+import Grafo.DrawGraf;
+
 /**
  *
  * @author santi
  */
 public class Inicio extends javax.swing.JFrame {
+    
 
     /**
-     * Creates new form Ventana
+     * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
 
     /**
@@ -28,45 +31,175 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        Show = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
+        InputNumHormigas = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        InputNumCiclos = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        InputVisibilidadCiudad = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        InputFeromona = new javax.swing.JTextField();
+        InputValorEvaporacion = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        iniciar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        InputCiudadInicial = new javax.swing.JTextField();
+        InputCiudadFinal = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setText("ExplcicaExplcicaExplcicaExplcicaExplcicaExplcica");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 260, 30));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Santiago Alvarez");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
-
-        Show.setText("Empezar");
-        Show.addActionListener(new java.awt.event.ActionListener() {
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowActionPerformed(evt);
+                CancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(Show, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
+        jPanel1.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 90, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Ant Colony System");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+        InputNumHormigas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputNumHormigasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InputNumHormigas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 130, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 340));
+        jLabel1.setText("Numero de Hormigas");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+
+        InputNumCiclos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputNumCiclosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InputNumCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 130, -1));
+
+        jLabel2.setText("Numero de Ciclos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+
+        InputVisibilidadCiudad.setText("2");
+        InputVisibilidadCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputVisibilidadCiudadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InputVisibilidadCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 130, -1));
+
+        jLabel3.setText(" Importancia de feromona (α)");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 180, -1));
+
+        jLabel4.setText("Visibilidad de Ciudad (β)");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 160, -1));
+
+        InputFeromona.setText("1");
+        InputFeromona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputFeromonaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InputFeromona, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, -1));
+
+        InputValorEvaporacion.setText("0.5");
+        InputValorEvaporacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputValorEvaporacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InputValorEvaporacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 130, -1));
+
+        jLabel5.setText("Valor de Evaporacion (ρ)");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 160, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Recorrido de Hormiga");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 160, -1));
+
+        iniciar.setText("Iniciar Simulacion");
+        iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 150, -1));
+
+        jLabel7.setText("Ciudad Inicial");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        InputCiudadInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputCiudadInicialActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InputCiudadInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 130, -1));
+
+        InputCiudadFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputCiudadFinalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(InputCiudadFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 130, -1));
+
+        jLabel8.setText("Ciudad Final");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowActionPerformed
+    private void InputNumHormigasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNumHormigasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputNumHormigasActionPerformed
+
+    private void InputNumCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNumCiclosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputNumCiclosActionPerformed
+
+    private void InputVisibilidadCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputVisibilidadCiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputVisibilidadCiudadActionPerformed
+
+    private void InputFeromonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputFeromonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputFeromonaActionPerformed
+
+    private void InputValorEvaporacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputValorEvaporacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputValorEvaporacionActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         this.setVisible(false);
-        Home home = new Home();
-        home.setVisible(true);
-    }//GEN-LAST:event_ShowActionPerformed
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
+        DrawGraf ant = new DrawGraf();
+        ant.draw(grafo.getVertices());
+    }//GEN-LAST:event_iniciarActionPerformed
+
+    private void InputCiudadInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputCiudadInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputCiudadInicialActionPerformed
+
+    private void InputCiudadFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputCiudadFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputCiudadFinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,9 +227,6 @@ public class Inicio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -107,10 +237,23 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Show;
+    private javax.swing.JButton Cancelar;
+    private javax.swing.JTextField InputCiudadFinal;
+    private javax.swing.JTextField InputCiudadInicial;
+    private javax.swing.JTextField InputFeromona;
+    private javax.swing.JTextField InputNumCiclos;
+    private javax.swing.JTextField InputNumHormigas;
+    private javax.swing.JTextField InputValorEvaporacion;
+    private javax.swing.JTextField InputVisibilidadCiudad;
+    private javax.swing.JButton iniciar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
