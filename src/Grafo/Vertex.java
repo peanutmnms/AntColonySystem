@@ -56,7 +56,7 @@ public class Vertex<T> extends Nodo<T>{
 //    }
 //}
     
-     public void deleteFirst(){
+    public void deleteFirst(){
         if (this.adjacent.getpFirst() != null){
             Nodo aux = this.adjacent.getpFirst();
             this.adjacent.setpFirst(this.adjacent.getpFirst().getpNext());
@@ -91,22 +91,26 @@ public class Vertex<T> extends Nodo<T>{
 //        
 //    }
      
-     public void deleteEdge(Nodo x){
-         Edge aux= (Edge) this.adjacent.getpFirst();
-         if (aux != null) {
-             while(aux!=null){
-                 if ((Edge) aux.getpNext() != null){
+    public void deleteEdge(Nodo x){
+        Edge aux= (Edge) this.adjacent.getpFirst();
+        if (aux != null) {
+            if(aux.getDest().getData()==x.getData()){
+                this.adjacent.setpFirst(aux.getpNext());
+                aux.setpNext(null);
+            } 
+            while(aux!=null){
+                if ((Edge) aux.getpNext() != null){
                     if (((Edge) aux.getpNext()).getDest().getData() == x.getData()){
                         Edge n = (Edge) aux.getpNext();
                         aux.setpNext((Edge) n.getpNext());
                     }
                 }
                  
-                 aux=(Edge) aux.getpNext(); 
-             } 
-         }
+                aux=(Edge) aux.getpNext(); 
+            } 
+        }
          
-     }
+    }
     
     
     

@@ -7,7 +7,7 @@ package GUI;
 import java.io.File;
 import javax.swing.JFileChooser;
 import Grafo.*;
-import antcolonysystem.DrawGraf;
+import Grafo.DrawGraf;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -36,67 +36,21 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
-        Upload = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jPanel2 = new javax.swing.JPanel();
+        Save = new javax.swing.JButton();
         AddVertex = new javax.swing.JButton();
         DeleteVertex = new javax.swing.JButton();
         Start = new javax.swing.JButton();
         InputAntNum = new javax.swing.JTextField();
-        Save = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        Title = new javax.swing.JLabel();
+        InputNumCiclos = new javax.swing.JTextField();
+        Upload = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Title.setText("Ant Colony");
-        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
-
-        Upload.setText("Subir Archivo");
-        Upload.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UploadActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
-
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 370, 270));
-
-        AddVertex.setText("Agregar Ciudad");
-        AddVertex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddVertexActionPerformed(evt);
-            }
-        });
-        jPanel1.add(AddVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 150, -1));
-
-        DeleteVertex.setText("Eliminar Ciudad");
-        DeleteVertex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteVertexActionPerformed(evt);
-            }
-        });
-        jPanel1.add(DeleteVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 150, -1));
-
-        Start.setText("Iniciar");
-        Start.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Start, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 70, -1));
-
-        InputAntNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputAntNumActionPerformed(evt);
-            }
-        });
-        jPanel1.add(InputAntNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 70, -1));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Save.setText("Guardar Archivo");
         Save.addActionListener(new java.awt.event.ActionListener() {
@@ -104,24 +58,107 @@ public class Home extends javax.swing.JFrame {
                 SaveActionPerformed(evt);
             }
         });
-        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 150, -1));
+        jPanel2.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 150, -1));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 430));
+        AddVertex.setText("Agregar Ciudad");
+        AddVertex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddVertexActionPerformed(evt);
+            }
+        });
+        jPanel2.add(AddVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 150, -1));
+
+        DeleteVertex.setText("Eliminar Ciudad");
+        DeleteVertex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteVertexActionPerformed(evt);
+            }
+        });
+        jPanel2.add(DeleteVertex, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 150, -1));
+
+        Start.setText("Iniciar");
+        Start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Start, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 150, -1));
+
+        InputAntNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputAntNumActionPerformed(evt);
+            }
+        });
+        jPanel2.add(InputAntNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 150, -1));
+
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Title.setText("Ant Colony");
+        jPanel2.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        InputNumCiclos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputNumCiclosActionPerformed(evt);
+            }
+        });
+        jPanel2.add(InputNumCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 150, -1));
+
+        Upload.setText("Subir Archivo");
+        Upload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UploadActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 150, -1));
+
+        jLabel1.setText("Numero de ciclos");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+
+        jLabel2.setText("Numero de hormigas");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void InputAntNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputAntNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputAntNumActionPerformed
+
+    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
+        DrawGraf ant = new DrawGraf();
+        ant.draw(grafo.getVertices());
+    }//GEN-LAST:event_StartActionPerformed
+
+    private void DeleteVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVertexActionPerformed
+        EliminarCiudad ciudad = new EliminarCiudad();
+        ciudad.setVisible(true);
+
+    }//GEN-LAST:event_DeleteVertexActionPerformed
+
+    private void AddVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddVertexActionPerformed
+        InsertarCiudad ciudad = new InsertarCiudad();
+        ciudad.setVisible(true);
+    }//GEN-LAST:event_AddVertexActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        grafo.write_txt();
+    }//GEN-LAST:event_SaveActionPerformed
 
     private void UploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UploadActionPerformed
         //Crea objeto FileChooser
@@ -134,13 +171,13 @@ public class Home extends javax.swing.JFrame {
         file.showSaveDialog(this);
         //guarda el filechooser
         File guarda =file.getSelectedFile();
-        try{        
+        try{
             String fileName = guarda.getName().toUpperCase();
             if (fileName.endsWith(".TXT") ) {
                 VertexLista v1=grafo.read_text(guarda);
                 grafo.setVertices(v1);
                 JOptionPane.showMessageDialog(null, "El archivo se ha cargado de forma exitosa");
-                
+
                 //grafo.imprimir();
 
             }else{
@@ -149,36 +186,12 @@ public class Home extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"No ha introducido un archivo");
         }
-        
-        
-        
-       
 
     }//GEN-LAST:event_UploadActionPerformed
 
-    private void DeleteVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVertexActionPerformed
-        EliminarCiudad ciudad = new EliminarCiudad();
-        ciudad.setVisible(true);
-        
-    }//GEN-LAST:event_DeleteVertexActionPerformed
-
-    private void InputAntNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputAntNumActionPerformed
+    private void InputNumCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNumCiclosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InputAntNumActionPerformed
-
-    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-        grafo.write_txt();
-    }//GEN-LAST:event_SaveActionPerformed
-
-    private void AddVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddVertexActionPerformed
-        InsertarCiudad ciudad = new InsertarCiudad();
-        ciudad.setVisible(true);
-    }//GEN-LAST:event_AddVertexActionPerformed
-
-    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        DrawGraf ant = new DrawGraf();
-        ant.draw(grafo.getVertices());
-    }//GEN-LAST:event_StartActionPerformed
+    }//GEN-LAST:event_InputNumCiclosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,13 +232,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton AddVertex;
     private javax.swing.JButton DeleteVertex;
     private javax.swing.JTextField InputAntNum;
+    private javax.swing.JTextField InputNumCiclos;
     private javax.swing.JButton Save;
     private javax.swing.JButton Start;
     private javax.swing.JLabel Title;
     private javax.swing.JButton Upload;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

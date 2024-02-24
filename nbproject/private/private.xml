@@ -5,15 +5,12 @@
         <group>
             <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/GUI/EliminarCiudad.java</file>
             <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/Grafo/Edge.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/GUI/InsertarCiudad.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/antcolonysystem/DrawGraf.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/antcolonysystem/Main.java</file>
             <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/GUI/Home.java</file>
             <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/GUI/Inicio.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/Grafo/Grafo.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/EDD/Nodo.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/Grafo/EdgeLista.java</file>
+            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/Grafo/GrafManager.java</file>
             <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/Grafo/Vertex.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/antcolonysystem/Ant.java</file>
-            <file>file:/C:/Users/santi/OneDrive/Documents/NetBeansProjects/AntColonySystem/src/EDD/Lista.java</file>
         </group>
     </open-files>
 </project-private>

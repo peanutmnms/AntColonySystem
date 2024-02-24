@@ -123,7 +123,7 @@ public class GrafManager {
 
                 //agregando aristas de forma inversa para que sea un grafo no dirigido 
                 Edge aris2 = new Edge(this.vertices.buscar(arista[0]));
-                aris.setLength(Double.parseDouble(arista[2]));
+                aris2.setLength(Double.parseDouble(arista[2]));
                 this.vertices.buscarVertex(arista[1]).addAdjacent(aris2); 
             }
         }else{
