@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import AntColony.Ant;
+import EDD.*;
+import Grafo.*;
 import static GUI.Menu.grafo;
 import Grafo.DrawGraf;
 
@@ -33,7 +36,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Cancelar = new javax.swing.JButton();
-        InputNumHormigas = new javax.swing.JTextField();
+        InputNumAnt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         InputNumCiclos = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -62,12 +65,12 @@ public class Inicio extends javax.swing.JFrame {
         });
         jPanel1.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 90, -1));
 
-        InputNumHormigas.addActionListener(new java.awt.event.ActionListener() {
+        InputNumAnt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputNumHormigasActionPerformed(evt);
+                InputNumAntActionPerformed(evt);
             }
         });
-        jPanel1.add(InputNumHormigas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 130, -1));
+        jPanel1.add(InputNumAnt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 130, -1));
 
         jLabel1.setText("Numero de Hormigas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
@@ -164,9 +167,9 @@ public class Inicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InputNumHormigasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNumHormigasActionPerformed
+    private void InputNumAntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNumAntActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InputNumHormigasActionPerformed
+    }//GEN-LAST:event_InputNumAntActionPerformed
 
     private void InputNumCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNumCiclosActionPerformed
         // TODO add your handling code here:
@@ -189,6 +192,32 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
+        int numCiclo = Integer. parseInt(InputNumCiclos.getText());
+        int numAnt = Integer. parseInt(InputNumAnt.getText());
+        
+        double alpha = Double.parseDouble(InputFeromona.getText());
+        double beta = Double.parseDouble(InputVisibilidadCiudad.getText());
+        double rho = Double.parseDouble(InputValorEvaporacion.getText());
+        
+        String CiudadInicialStr = InputCiudadInicial.getText();
+        String CiudadFinalStr = InputCiudadFinal.getText();
+        
+        Nodo CiudadInicial = grafo.getVertices().buscar(CiudadInicialStr);
+        Nodo CiudadFinal = grafo.getVertices().buscar(CiudadFinalStr);
+        
+        
+        
+        for (int i = 0; i < numCiclo; i++) {
+            for (int j = 0; j < numAnt; j++) {
+                Ant ant = new Ant();
+                ant.setCiudadActual(CiudadInicial);
+                ant.recorridoAnt(alpha,beta,CiudadFinal);
+                
+            }
+            
+        }
+        
+        
         DrawGraf ant = new DrawGraf();
         ant.draw(grafo.getVertices());
     }//GEN-LAST:event_iniciarActionPerformed
@@ -241,8 +270,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField InputCiudadFinal;
     private javax.swing.JTextField InputCiudadInicial;
     private javax.swing.JTextField InputFeromona;
+    private javax.swing.JTextField InputNumAnt;
     private javax.swing.JTextField InputNumCiclos;
-    private javax.swing.JTextField InputNumHormigas;
     private javax.swing.JTextField InputValorEvaporacion;
     private javax.swing.JTextField InputVisibilidadCiudad;
     private javax.swing.JButton iniciar;

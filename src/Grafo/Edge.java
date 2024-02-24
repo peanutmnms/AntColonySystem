@@ -16,7 +16,7 @@ public class Edge<T> extends Nodo<T>{
     
     public Edge(T vertex) {
     super(vertex);
-    pheromones = 1;
+    pheromones = 0.1;
     }
 
     /**
