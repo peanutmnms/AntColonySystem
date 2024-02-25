@@ -195,6 +195,10 @@ public class Ant {
    
     }
     
+    public void actualizarFermonas(){
+        
+    }
+    
     
     
     

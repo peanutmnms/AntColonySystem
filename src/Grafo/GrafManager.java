@@ -186,4 +186,13 @@ public class GrafManager {
         
     }
     
+    public void evaporateFeromones(double rho){
+        Vertex aux= (Vertex) vertices.getpFirst();
+        while(aux != null){
+            aux.getAdjacent().evaporarFeromonas(rho);
+            aux =(Vertex) aux.getpNext();
+        }
+        
+    }
+    
 }

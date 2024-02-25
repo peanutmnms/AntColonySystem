@@ -50,4 +50,8 @@ public class Edge<T> extends Nodo<T>{
     public Vertex getDest(){
         return (Vertex) data;
     }
+    
+    public void evPheromonesE(double rho){
+        this.pheromones = (1-rho)*this.pheromones;
+    }
 }

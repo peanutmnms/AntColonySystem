@@ -40,4 +40,14 @@ public class EdgeLista extends Lista{
         return resultado;
     }
     
+    public void evaporarFeromonas(double rho){
+    Edge pAux;
+        pAux=(Edge)pFirst;
+        while(pAux!= null){
+            pAux.evPheromonesE(rho);
+            pAux=(Edge) pAux.getpNext();
+        }
+    }
+    
+    
 }

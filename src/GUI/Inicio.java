@@ -211,9 +211,10 @@ public class Inicio extends javax.swing.JFrame {
             for (int j = 0; j < numAnt; j++) {
                 Ant ant = new Ant();
                 ant.setCiudadActual(CiudadInicial);
-                ant.recorridoAnt(alpha,beta,CiudadFinal);
-                
+                ant.recorridoAnt(alpha,beta,CiudadFinal);  
             }
+            grafo.evaporateFeromones(rho);
+            
             
         }
         

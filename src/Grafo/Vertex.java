@@ -21,7 +21,7 @@ public class Vertex<T> extends Nodo<T>{
     /**
      * @return the adjacent
      */
-    public Lista getAdjacent() {
+    public EdgeLista getAdjacent() {
         return adjacent;
     }
 
