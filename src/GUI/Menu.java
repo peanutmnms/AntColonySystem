@@ -21,7 +21,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    static GrafManager grafo = new GrafManager();
+    static public GrafManager grafo = new GrafManager();
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
