@@ -9,6 +9,7 @@ import EDD.*;
 import Grafo.*;
 import static GUI.Menu.grafo;
 import Grafo.DrawGraf;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +24,8 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.InputCiudadInicial.setText((String)grafo.getVertices().getpFirst().getData());
+        this.InputCiudadFinal.setText((String)grafo.getVertices().getpLast().getData());
     }
 
     /**
@@ -65,6 +68,7 @@ public class Inicio extends javax.swing.JFrame {
         });
         jPanel1.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 90, -1));
 
+        InputNumAnt.setText("1");
         InputNumAnt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputNumAntActionPerformed(evt);
@@ -75,6 +79,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setText("Numero de Hormigas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
+        InputNumCiclos.setText("1");
         InputNumCiclos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputNumCiclosActionPerformed(evt);
@@ -202,8 +207,19 @@ public class Inicio extends javax.swing.JFrame {
         String CiudadInicialStr = InputCiudadInicial.getText();
         String CiudadFinalStr = InputCiudadFinal.getText();
         
-        Nodo CiudadInicial = grafo.getVertices().buscar(CiudadInicialStr);
-        Nodo CiudadFinal = grafo.getVertices().buscar(CiudadFinalStr);
+        Nodo CiudadInicial = null;
+        Nodo CiudadFinal = null;
+        
+        try{
+            CiudadInicial = grafo.getVertices().buscar(CiudadInicialStr);
+            CiudadFinal = grafo.getVertices().buscar(CiudadFinalStr);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "La ciudad no se encuentra en el grafo.");
+            CiudadInicial = grafo.getVertices().getpFirst();
+            CiudadFinal = grafo.getVertices().getpLast();
+        }
+        
+        
         
         
         
@@ -213,12 +229,10 @@ public class Inicio extends javax.swing.JFrame {
                 ant.setCiudadActual(CiudadInicial);
                 ant.recorridoAnt(alpha,beta,CiudadFinal);  
             }
-            grafo.evaporateFeromones(rho);
-            
-            
+            grafo.updateFeromones(rho);
+  
         }
-        
-        
+
         DrawGraf ant = new DrawGraf();
         ant.draw(grafo.getVertices());
     }//GEN-LAST:event_iniciarActionPerformed

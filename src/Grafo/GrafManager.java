@@ -17,6 +17,21 @@ import javax.swing.JOptionPane;
  */
 public class GrafManager {
     protected VertexLista vertices;
+    protected boolean subido;
+
+    /**
+     * @return the subido
+     */
+    public boolean getSubido() {
+        return subido;
+    }
+
+    /**
+     * @param subido the subido to set
+     */
+    public void setSubido(boolean subido) {
+        this.subido = subido;
+    }
 
     /**
      * @return the vertices
@@ -34,7 +49,7 @@ public class GrafManager {
     
     
     //Funcion para importar el archivo TXT y leer toda la data del archivo 
-    public static VertexLista read_text(File file){
+    public VertexLista read_text(File file){
         VertexLista vl = new VertexLista();
         
         String read="";
@@ -83,29 +98,40 @@ public class GrafManager {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No ha importado ningun archivo");
         }
+    setSubido(true);    
     return vl;   
     }
     
     //funcion para imprimir el grafo (todos los nodos con sus adjacentes y distancias) por consola
-    public void imprimir(){
-        Vertex aux = (Vertex) this.vertices.getpFirst();
-        while(aux!= null){
-            System.out.println(aux.getData());
-            EdgeLista auxList = (EdgeLista) aux.getAdjacent();
-            System.out.println(auxList.recorrer());
-            Edge auxE = (Edge) auxList.getpFirst();
-            while (auxE.getpNext() != null){
-                System.out.println(auxE.getLength());
-                auxE = (Edge) auxE.getpNext();
-            }
+    public String imprimir(){
+        String info = "";
+        String aristas = "";
+        info += "ciudad\n";
+        String ciudades=""; 
+        
+        if (this.vertices!=null) {
+            Vertex auxV = (Vertex) vertices.getpFirst();
+            while(auxV!=null){
+                Edge auxE = (Edge) auxV.getAdjacent().getpFirst();
                 
-            
-//            while (aux2 != null)
-//                System.out.print(aux.getData()+", ");
-//                aux2 = (Edge) aux2.getpNext();
+                while(auxE!=null){
+                    
+                    if (!ciudades.contains((String) auxE.getDest().getData())) {
+                        String infoArista = auxV.getData() + "," + auxE.getDest().getData()+ "," + String.valueOf(auxE.getLength());
+                        aristas += infoArista + "\n";   
+                    }
+                    auxE = (Edge) auxE.getpNext();  
+                }
+                ciudades+= (String) auxV.getData() + " ";
                 
-            aux = (Vertex) aux.getpNext();
+                info += (String) auxV.getData() + "\n";
+                auxV = (Vertex) auxV.getpNext();
+            }           
         }
+        
+        info += "aristas\n";
+        info += aristas;
+        return info;
     }
     
     //Funcion para a~nadir un vertex (despues de que primero haya sido importado el archivo TXT)
@@ -135,32 +161,7 @@ public class GrafManager {
     public void write_txt(){
         String info = "";
         String path = "test/info.txt";
-        String aristas = "";
-        info += "ciudad\n";
-        String ciudades=""; 
-        
-        if (this.vertices!=null) {
-            Vertex auxV = (Vertex) vertices.getpFirst();
-            while(auxV!=null){
-                Edge auxE = (Edge) auxV.getAdjacent().getpFirst();
-                
-                while(auxE!=null){
-                    
-                    if (!ciudades.contains((String) auxE.getDest().getData())) {
-                        String infoArista = auxV.getData() + "," + auxE.getDest().getData()+ "," + String.valueOf(auxE.getLength());
-                        aristas += infoArista + "\n";   
-                    }
-                    auxE = (Edge) auxE.getpNext();  
-                }
-                ciudades+= (String) auxV.getData() + " ";
-                
-                info += (String) auxV.getData() + "\n";
-                auxV = (Vertex) auxV.getpNext();
-            }           
-        }
-        
-        info += "aristas\n";
-        info += aristas;
+        info=imprimir();
         
         try{
             File file = new File(path);
@@ -186,10 +187,10 @@ public class GrafManager {
         
     }
     
-    public void evaporateFeromones(double rho){
+    public void updateFeromones(double rho){
         Vertex aux= (Vertex) vertices.getpFirst();
         while(aux != null){
-            aux.getAdjacent().evaporarFeromonas(rho);
+            aux.getAdjacent().actualizarFeromonas(rho);
             aux =(Vertex) aux.getpNext();
         }
         

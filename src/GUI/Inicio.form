@@ -57,6 +57,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="InputNumAnt">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InputNumAntActionPerformed"/>
           </Events>
@@ -77,6 +80,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="InputNumCiclos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InputNumCiclosActionPerformed"/>
           </Events>

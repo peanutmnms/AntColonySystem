@@ -19,7 +19,7 @@ public class DrawGraf {
         System.setProperty("org.graphstream.ui", "swing");
 
         Graph graph = new SingleGraph("AntColonySystem");
-        graph.setAttribute("ui.stylesheet", " graph {fill-color: white; padding: 50px; } node {fill-color: brown; size: 95px, 95px; size-mode: dyn-size; shape: circle; stroke-mode: plain; stroke-color: black; stroke-width: 2px; text-alignment: center; text-color: white; text-style: bold; text-size: 40;} edge {stroke-mode: plain; stroke-color: black; size: 1px; text-alignment: above; text-color: brown; text-style: bold; text-size: 30; text-padding: 20;}");
+        graph.setAttribute("ui.stylesheet", " graph {fill-color: white; padding: 50px; } node {fill-color: brown; z-index: 0; size: 80px, 80px; size-mode: dyn-size; shape: circle; stroke-mode: plain; stroke-color: black; stroke-width: 2px; text-alignment: center; text-color: white; text-style: bold; text-size: 40;} edge {stroke-mode: plain; stroke-color: black; size: 1px; text-alignment: above; text-color: brown; text-style: bold; text-size: 30; text-padding: 20;}");
         String ciudades=""; 
         String aristas = "";
         try{
@@ -45,6 +45,7 @@ public class DrawGraf {
             }
             graph.edges().forEach(e -> e.setAttribute("label", "" + (double) e.getNumber("length")));
             Viewer viewer = graph.display();
+            viewer.enableAutoLayout();
             viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error. No se puede graficar.");

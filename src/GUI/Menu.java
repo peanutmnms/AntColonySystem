@@ -36,6 +36,7 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         Save = new javax.swing.JButton();
         AddVertex = new javax.swing.JButton();
@@ -43,6 +44,10 @@ public class Menu extends javax.swing.JFrame {
         Start = new javax.swing.JButton();
         Title = new javax.swing.JLabel();
         Upload = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ShowFile = new javax.swing.JTextArea();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,11 +97,19 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel2.add(Upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 150, -1));
 
+        ShowFile.setColumns(20);
+        ShowFile.setRows(5);
+        jScrollPane1.setViewportView(ShowFile);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 140, 180));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,20 +120,35 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-        Inicio inicio = new Inicio();
-        inicio.setVisible(true);
+        if (grafo.getSubido()) {
+            Inicio inicio = new Inicio();
+            inicio.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe importar un archivo.");
+        }
+        
         
     }//GEN-LAST:event_StartActionPerformed
 
     private void DeleteVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteVertexActionPerformed
-        EliminarCiudad ciudad = new EliminarCiudad();
-        ciudad.setVisible(true);
+        if (grafo.getSubido()) {
+            EliminarCiudad ciudad = new EliminarCiudad();
+            ciudad.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe importar un archivo.");
+        }
+        
 
     }//GEN-LAST:event_DeleteVertexActionPerformed
 
     private void AddVertexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddVertexActionPerformed
-        InsertarCiudad ciudad = new InsertarCiudad();
-        ciudad.setVisible(true);
+        if (grafo.getSubido()) {
+            InsertarCiudad ciudad = new InsertarCiudad();
+            ciudad.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe importar un archivo.");
+        }
+        
     }//GEN-LAST:event_AddVertexActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
@@ -144,6 +172,7 @@ public class Menu extends javax.swing.JFrame {
                 VertexLista v1=grafo.read_text(guarda);
                 grafo.setVertices(v1);
                 JOptionPane.showMessageDialog(null, "El archivo se ha cargado de forma exitosa");
+                this.ShowFile.setText(grafo.imprimir());
 
                 //grafo.imprimir();
 
@@ -196,9 +225,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton AddVertex;
     private javax.swing.JButton DeleteVertex;
     private javax.swing.JButton Save;
+    private javax.swing.JTextArea ShowFile;
     private javax.swing.JButton Start;
     private javax.swing.JLabel Title;
     private javax.swing.JButton Upload;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

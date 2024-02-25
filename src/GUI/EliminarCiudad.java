@@ -106,6 +106,7 @@ public class EliminarCiudad extends javax.swing.JFrame {
                 Nodo ciudad = Menu.grafo.getVertices().buscar(inputCiudad);
                 //System.out.println(ciudad);
                 Menu.grafo.deleteVertex(ciudad);
+                
                 JOptionPane.showMessageDialog(null, "La ciudad "+inputCiudad+" ha sido\nborrada de forma exitosa.");
                 this.setVisible(false);
             }catch(Exception e){

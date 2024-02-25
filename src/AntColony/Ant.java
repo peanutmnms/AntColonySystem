@@ -75,13 +75,13 @@ public class Ant {
     public void recorridoAnt(double alpha, double beta, Nodo ciudadBuscada){
         Vertex ciudadAct = (Vertex) this.ciudadActual;
         int iN = ciudadAct.getAdjacent().getiN();
-        //System.out.println(iN);
-        this.recorridoInterno(iN, ciudadAct, alpha, beta, ciudadBuscada);
+        
+        int indice = 0;
+        this.recorridoInterno(iN, ciudadAct, alpha, beta, ciudadBuscada, indice);
     }
 
     
-    public void recorridoInterno(int iN, Vertex ciudadAct, double alpha, double beta, Nodo ciudadBuscada){
-        int indice = 0;
+    public void recorridoInterno(int iN, Vertex ciudadAct, double alpha, double beta, Nodo ciudadBuscada, int indice){
         Edge arista = (Edge)ciudadAct.getAdjacent().getpFirst();
         double longitud = arista.getLength();
         double feromonas = arista.getPheromones();
@@ -110,27 +110,30 @@ public class Ant {
             }
         }
         
-        Double[] listado = new Double[iN-count];
+        Double[] listado = new Double[iN];
         
         //Calcula el valor del numerador y lo divide por el denominador, guardando todas las probabilidades en un array.
         arista = (Edge)ciudadAct.getAdjacent().getpFirst();
         longitud = arista.getLength();
         feromonas = arista.getPheromones();
+        int aux = 0;
         for (int i = 0; i < iN; i++) {
-            int posicion = -1;
-            for (int j = 0; j < getRecorridoHecho().length; j++) {
-                if (getRecorridoHecho()[j] == arista.getDest().getData()) {
-                    posicion = j;
-                }
-            }
+//            int posicion = -1;
+//            for (int j = 0; j < getRecorridoHecho().length; j++) {
+//                if (getRecorridoHecho()[j] == arista.getDest().getData()) {
+//                    posicion = j;
+//                }
+//            }
             
-            if (i != posicion) {
+//            if (i != posicion) {
                 double total = 0;
                 double numerador = ((Math.pow(feromonas, alpha))*(Math.pow((1/longitud), beta)));
                 //System.out.println("numerador"+numerador);
                 total = numerador/denominador;
-                listado[i-posicion]=total;
-            }
+                listado[aux]=total;
+                
+                aux +=1;
+//            }
 
             arista = (Edge)arista.getpNext();
             
@@ -143,7 +146,9 @@ public class Ant {
         double sum = 0;
         //suma el total probabilistico
         for (int i = 0; i < iN; i++) {
-            sum += listado[i]; 
+            System.out.println(listado[i]);
+            sum += listado[i];
+            System.out.println("Suma probabilistica"+ sum);
         }
         
         double x =0;
@@ -155,7 +160,6 @@ public class Ant {
         
         Random rand = new Random();
         double randub1 = rand.nextDouble();
-        //System.out.println(randub1);
         
         int camino = 0;
         for (int i = 0; i < iN; i++) {
@@ -171,15 +175,15 @@ public class Ant {
         }
         
         arista = (Edge)ciudadAct.getAdjacent().getpFirst();
+        //this.addRecorridoHecho((String) ciudadAct.getData(), indice);
         indice+=1;
-        this.addRecorridoHecho((String) ciudadAct.getData(), indice);
         System.out.println("Estoy parado en: "+this.ciudadActual.getData());
         for (int i = 0; i < listado.length; i++) {
             if (i == camino) {
+                arista.addAnt();
                 this.setCiudadActual(arista.getDest());
                 ciudadAct = (Vertex) this.ciudadActual;
                 iN = ciudadAct.getAdjacent().getiN();
-                System.out.println(this.ciudadActual.getData());
             }
             arista = (Edge)arista.getpNext();
             
@@ -187,7 +191,7 @@ public class Ant {
         }
         
         if (this.ciudadActual != ciudadBuscada){
-            recorridoInterno(iN, ciudadAct, alpha, beta, ciudadBuscada);
+            recorridoInterno(iN, ciudadAct, alpha, beta, ciudadBuscada, indice);
         }
         else{
             System.out.println("La siguiente es la ciudad final ");
