@@ -10,10 +10,11 @@ import EDD.*;
  * @author santi
  */
 public class EdgeLista extends Lista{
+    
     public Edge buscarEdge(String elemento){
-        Edge aux = (Edge) pFirst;
+        Edge aux = (Edge) getpFirst();
         while (aux != null){
-            if(aux.getData()==elemento){
+            if(aux.getData().equals(elemento)){
                 return aux;
             }else{
                 aux=(Edge) aux.getpNext();
@@ -21,5 +22,35 @@ public class EdgeLista extends Lista{
         }
      return null;
     }
+    
+    public String recorrer(){
+    Nodo pAux;
+    String resultado="";
+        if (isEmpty()){
+            resultado=" está vacía";
+
+        }else{
+            pAux=pFirst;
+            while(pAux!= null){
+                resultado=resultado + this.read((Nodo)pAux.getData())+ ", ";
+                pAux=próximo(pAux);
+                //pAux=pAux.pnext;
+            }
+        }
+        return resultado;
+    }
+    
+    public void actualizarFeromonas(double rho){
+    Edge pAux;
+        pAux=(Edge)pFirst;
+        while(pAux!= null){
+            pAux.evPheromonesE(rho);
+            double pheroadd = pAux.getPheromones()+(pAux.getNumAnts()/pAux.getLength());
+            pAux.setPheromones(pheroadd);
+            pAux.setNumAnts(0);
+            pAux=(Edge) pAux.getpNext();
+        }
+    }
+    
     
 }

@@ -12,18 +12,60 @@ public class Lista {
     protected Nodo pFirst;
     protected Nodo pLast;
     protected int iN;
-    
-public String vaciarLista(){
-    pFirst=null;
-    iN=0;  
+
+    /**
+     * @return the pFirst
+     */
+    public Nodo getpFirst() {
+        return pFirst;
+    }
+
+    /**
+     * @param pFirst the pFirst to set
+     */
+    public void setpFirst(Nodo pFirst) {
+        this.pFirst = pFirst;
+    }
+
+    /**
+     * @return the pLast
+     */
+    public Nodo getpLast() {
+        return pLast;
+    }
+
+    /**
+     * @param pLast the pLast to set
+     */
+    public void setpLast(Nodo pLast) {
+        this.pLast = pLast;
+    }
+
+    /**
+     * @return the iN
+     */
+    public int getiN() {
+        return iN;
+    }
+
+    /**
+     * @param iN the iN to set
+     */
+    public void setiN(int iN) {
+        this.iN = iN;
+    }
+        
+public String emptyList(){
+        setpFirst(null);
+        setiN(0);  
     return "La lista esta vacia";
 }
 
 public int numeroNodos(){
-    return iN;
+    return getiN();
  }
- public boolean esVacio(){
-    return pFirst==null;
+ public boolean isEmpty(){
+    return getpFirst()==null;
  }
  public Nodo próximo(Nodo pValor){
     if (pValor!=null){
@@ -34,13 +76,13 @@ public int numeroNodos(){
     }
  }
  
- public Object leer(Nodo pValor){
+ public Object read(Nodo pValor){
     return pValor.getData();
  }
  
  /*public void insertar(Object x, Nodo pValor){
     Nodo pNew=new Nodo(x);
-    if (esVacio()){
+    if (isEmpty()){
          pFirst=pNew;
     }else{
         pNew.setpNext(pValor.getpNext());
@@ -49,21 +91,33 @@ public int numeroNodos(){
  iN++;
  }*/
  
- public void insertar(Nodo x){
+ public void insertarNodo(Nodo x){
     Nodo pNew= x;
-    if (esVacio()){
-         pFirst=pNew;
-         pLast=pNew;
+    if (isEmpty()){
+            setpFirst(pNew);
+            setpLast(pNew);
     }else{
-        pLast.setpNext(pNew);
-        pLast=pNew;    
+            getpLast().setpNext(pNew);
+            setpLast(pNew);    
     }
- iN++;
+        setiN(getiN() + 1);
+ }
+ 
+ public void insertar(Nodo x){
+    Nodo pNew= new Nodo(x);
+    if (isEmpty()){
+            setpFirst(pNew);
+            setpLast(pNew);
+    }else{
+            getpLast().setpNext(pNew);
+            setpLast(pNew);    
+    }
+        setiN(getiN() + 1);
  }
  
   /*public void insertarPrimero(int x){
     Nodo pNew=new Nodo(x);
-    if (esVacio()){
+    if (isEmpty()){
          pFirst=pNew;
          pLast=pNew;
     }else{
@@ -73,9 +127,9 @@ public int numeroNodos(){
  iN++;
  }*/
  public Nodo buscar(String elemento){
-        Nodo aux = pFirst;
+        Nodo aux = getpFirst();
         while (aux != null){
-            if(aux.getData()==elemento){
+            if(aux.getData().equals(elemento)){
                 return aux;
             }else{
                 aux=aux.getpNext();
@@ -84,6 +138,40 @@ public int numeroNodos(){
      return null;
     }
  
+ public void deleteFirst(){
+    if (pFirst != null){
+        Nodo aux = pFirst;
+        pFirst = pFirst.getpNext();
+        aux.setpNext(null);
+        setiN(getiN() -1);
+    }
+ }
+ 
+ public void deleteNodo(Nodo x){
+    Nodo aux = pFirst;
+    Nodo aux1 = x;
+    if (pFirst != null) {
+        if (pFirst == aux1) {
+           this.deleteFirst();
+        }else{
+            while(aux.getpNext()!=aux1){
+                aux=aux.getpNext();
+            }
+            aux.setpNext(aux1.getpNext());
+            aux1.setpNext(null);
+            setiN(getiN()- 1 );
+            if (pLast==x) {
+                setpLast(aux);
+            }
+        }  
+    }
+ }
+ 
+ 
+ 
+ 
+ 
 }
+ 
 
 
