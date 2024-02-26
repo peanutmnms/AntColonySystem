@@ -225,7 +225,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton AddVertex;
     private javax.swing.JButton DeleteVertex;
     private javax.swing.JButton Save;
-    private javax.swing.JTextArea ShowFile;
+    protected static javax.swing.JTextArea ShowFile;
     private javax.swing.JButton Start;
     private javax.swing.JLabel Title;
     private javax.swing.JButton Upload;

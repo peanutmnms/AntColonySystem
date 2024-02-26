@@ -160,6 +160,9 @@ public int numeroNodos(){
             aux.setpNext(aux1.getpNext());
             aux1.setpNext(null);
             setiN(getiN()- 1 );
+            if (pLast==x) {
+                setpLast(aux);
+            }
         }  
     }
  }

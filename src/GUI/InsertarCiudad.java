@@ -131,6 +131,7 @@ public class InsertarCiudad extends javax.swing.JFrame {
             Menu.grafo.addVertex(ciudad, aristas);
             //Home.grafo.imprimir(Menu.grafo.getVertices());
             this.setVisible(false);
+            Menu.ShowFile.setText(Menu.grafo.imprimir());
         }
         else{
             JOptionPane.showMessageDialog(null, "Posee un formato invalido o faltan campos");
